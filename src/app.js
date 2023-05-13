@@ -28,7 +28,7 @@ function App({store}) {
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>
                     {item.title} 
-                    <span className='Item-select'>{item.selectCount ? `Выделено раз: ${item.selectCount} ` : ''}</span>
+                    <span className='Item-select'>{item.selectCount ? ` | Выделяли ${item.selectCount} ${declOfNum(item.selectCount, ['раз', 'раза'])}` : ''}</span>
                 </div>
                 <div className='Item-actions'>
                   <button onClick={() => store.deleteItem(item.code)}>
