@@ -1,6 +1,7 @@
 import React from 'react';
 import {createElement} from './utils.js';
 import './styles.css';
+import { declOfNum } from './utils.js';
 
 /**
  * Приложение
