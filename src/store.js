@@ -1,4 +1,4 @@
-import {generateCode} from "./utils";
+import { calculateCartPrice, generateCode } from "./utils";
 
 /**
  * Хранилище состояния приложения
@@ -6,6 +6,10 @@ import {generateCode} from "./utils";
 class Store {
   constructor(initState = {}) {
     this.state = initState;
+
+    this.state.Cart ??= []; // es2020+. для деградации есть бабел или ts.config
+    this.state.info ??= { goods: 0, price: 0 };
+
     this.listeners = []; // Слушатели изменений состояния
   }
 
@@ -18,7 +22,7 @@ class Store {
     this.listeners.push(listener);
     // Возвращается функция для удаления добавленного слушателя
     return () => {
-      this.listeners = this.listeners.filter(item => item !== listener);
+      this.listeners = this.listeners.filter(goods => goods !== listener);
     }
   }
 
@@ -39,6 +43,7 @@ class Store {
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
   }
+
   /**
    * Добавление товара в корзину
    * @param code

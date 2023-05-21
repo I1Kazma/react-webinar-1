@@ -1,7 +1,8 @@
-import React, {useCallback} from 'react';
-import List from "./components/list";
+import React, { useCallback, useState } from 'react';
+import CartModal from "./components/cart";
 import Controls from "./components/controls";
 import Head from "./components/head";
+import List from "./components/list";
 import PageLayout from "./components/page-layout";
 
 /**
